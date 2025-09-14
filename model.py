@@ -3,7 +3,7 @@ import numpy as np
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing import image
 
-# Load pre-trained MobileNetV2 model
+# Load pre-trained MobileNetV2
 model = MobileNetV2(weights="imagenet")
 
 def predict_image(img_path: str):
@@ -16,7 +16,7 @@ def predict_image(img_path: str):
     img_array = np.expand_dims(img_array, axis=0)
     img_array = preprocess_input(img_array)
 
-    # Make predictions
+    # Predict
     predictions = model.predict(img_array)
     decoded = decode_predictions(predictions, top=3)[0]
     return decoded
